@@ -35,4 +35,13 @@ public class AppTest
     {
         assertTrue( true );
     }
+    
+    /**
+     * Rigourous Test :-)
+     */
+    public void testApp2()
+    {
+    	App.main(null);
+        assertTrue( true );
+    }
 }
