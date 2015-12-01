@@ -27,8 +27,8 @@
 			code coverage. -->
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-<!-- 		<sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath>
-		<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath> -->
+		<!-- <sonar.jacoco.reportPath>${project.basedir}/../target/jacoco.exec</sonar.jacoco.reportPath> 
+			<sonar.jacoco.itReportPath>${project.basedir}/../target/jacoco-it.exec</sonar.jacoco.itReportPath> -->
 		<sonar.language>java</sonar.language>
 	</properties>
 
@@ -55,7 +55,44 @@
 	<!-- Build -->
 	<!-- ================================= -->
 	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.7.2.201409121644</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<configuration>
+					<append>true</append>
+				</configuration>
+				<executions>
+					<execution>
+						<id>agent-for-ut</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>agent-for-it</id>
+						<goals>
+							<goal>prepare-agent-integration</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-site</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
@@ -150,45 +187,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
-				<pluginManagement>
-					<plugins>
-						<plugin>
-							<groupId>org.jacoco</groupId>
-							<artifactId>jacoco-maven-plugin</artifactId>
-							<version>0.7.2.201409121644</version>
-						</plugin>
-					</plugins>
-				</pluginManagement>
-				<plugins>
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<configuration>
-							<append>true</append>
-						</configuration>
-						<executions>
-							<execution>
-								<id>agent-for-ut</id>
-								<goals>
-									<goal>prepare-agent</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>agent-for-it</id>
-								<goals>
-									<goal>prepare-agent-integration</goal>
-								</goals>
-							</execution>
-							<execution>
-								<id>jacoco-site</id>
-								<phase>verify</phase>
-								<goals>
-									<goal>report</goal>
-								</goals>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
+
 			</build>
 		</profile>
 	</profiles>
@@ -243,7 +242,7 @@
 			<url>http://repo1.maven.org/maven2/</url>
 		</repository>
 	</repositories>
-	
+
 	<!-- ================================= -->
 	<!-- Repositories -->
 	<!-- ================================= -->
