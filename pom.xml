@@ -10,6 +10,9 @@
 	<name>deveryware-maven-java-project</name>
 	<url>http://maven.apache.org</url>
 
+	<!-- ================================= -->
+	<!-- Properties -->
+	<!-- ================================= -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.source>1.5</maven.compiler.source>
@@ -29,8 +32,10 @@
 		<sonar.language>java</sonar.language>
 	</properties>
 
+	<!-- ================================= -->
+	<!-- Dependencies -->
+	<!-- ================================= -->
 	<dependencies>
-
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -44,11 +49,11 @@
 			<version>2.7.1</version>
 			<type>maven-plugin</type>
 		</dependency>
-
-		<!-- <dependency> <groupId>org.jacoco</groupId> <artifactId>jacoco-maven-plugin</artifactId> 
-			<version>0.7.5.201505241946</version> </dependency> -->
-
 	</dependencies>
+
+	<!-- ================================= -->
+	<!-- Build -->
+	<!-- ================================= -->
 	<build>
 		<plugins>
 			<plugin>
@@ -135,6 +140,9 @@
 		</plugins>
 	</build>
 
+	<!-- ================================= -->
+	<!-- Profiles -->
+	<!-- ================================= -->
 	<profiles>
 		<profile>
 			<id>sonar-coverage</id>
@@ -185,6 +193,9 @@
 		</profile>
 	</profiles>
 
+	<!-- ================================= -->
+	<!-- Reporting -->
+	<!-- ================================= -->
 	<reporting>
 		<plugins>
 			<!-- Normally, we take off the dependency report, saves time. -->
@@ -212,6 +223,9 @@
 		</plugins>
 	</reporting>
 
+	<!-- ================================= -->
+	<!-- Repositories -->
+	<!-- ================================= -->
 	<repositories>
 		<repository>
 			<id>central</id>
@@ -222,12 +236,17 @@
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
+
 		<repository>
 			<id>my-repo2</id>
 			<name>your custom repo</name>
 			<url>http://repo1.maven.org/maven2/</url>
 		</repository>
 	</repositories>
+	
+	<!-- ================================= -->
+	<!-- Repositories -->
+	<!-- ================================= -->
 	<pluginRepositories>
 		<pluginRepository>
 			<id>central</id>
